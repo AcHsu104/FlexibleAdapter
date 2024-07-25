@@ -6,21 +6,25 @@ if (gradle.getStartParameter().getTaskNames().contains("install")) {
 
 group = publishedGroupId // Maven Group ID for the artifact
 
+// Create a task to generate a sources JAR
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
+    archiveClassifier.set('sources')
     from android.sourceSets.main.java.srcDirs
 }
 
+// Create a task to generate Javadoc
 task javadoc(type: Javadoc) {
     source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath = files(android.getBootClasspath().join(File.pathSeparator))
 }
 
+// Create a task to generate a Javadoc JAR, depends on the Javadoc task
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier.set('javadoc')
     from javadoc.getDestinationDir()
 }
 
+// Register the tasks so they can be used as dependencies
 artifacts {
     archives sourcesJar
     archives javadocJar

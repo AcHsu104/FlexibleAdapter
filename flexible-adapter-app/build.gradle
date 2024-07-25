@@ -1,21 +1,24 @@
 apply plugin: 'com.android.application'
-apply plugin: 'eu.davidea.grabver'
+// apply plugin: 'eu.davidea.grabver'
 
-versioning {
-    major 5
-    minor 1
-    patch 0
-}
+// versioning {
+//     major 5
+//     minor 1
+//     patch 0
+// }
 
 android {
     compileSdkVersion targetSdk
-
+    namespace 'eu.davidea'
+    
     defaultConfig {
         applicationId 'eu.davidea.samples.flexibleadapter'
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode versioning.code
-        versionName versioning.name
+        versionCode 1
+        versionName "5.1.0"
+        // versionCode versioning.code
+        // versionName versioning.name
 
         // https://medium.com/@chrisbanes/appcompat-v23-2-age-of-the-vectors-91cbafa87c88
         // https://developer.android.com/studio/write/vector-asset-studio.html
@@ -25,7 +28,8 @@ android {
 
         android.applicationVariants.all { variant ->
             variant.outputs.all {
-                outputFileName = "flexible-adapter-v" + versioning.name + "-c" + versioning.code + ".apk"
+                outputFileName = "flexible-adapter-v.apk"
+                // outputFileName = "flexible-adapter-v" + versioning.name + "-c" + versioning.code + ".apk"
             }
         }
     }
@@ -37,7 +41,7 @@ android {
     }
     buildTypes {
         debug {
-            versionNameSuffix ' #' + versioning.build + versioning.builtOn
+            versionNameSuffix ' #'
             minifyEnabled false
         }
         release {

@@ -1,15 +1,20 @@
-apply plugin: 'com.android.library'
-apply plugin: 'eu.davidea.grabver'
-
-versioning {
-    major 1
-    minor 0
-    patch 0
-    //preRelease "b4"
-    dependsOn "install"
+// apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
 }
+
+// apply plugin: 'eu.davidea.grabver'
+
+// versioning {
+//     major 1
+//     minor 0
+//     patch 0
+//     //preRelease "b4"
+//     dependsOn "install"
+// }
 // For maven repository
-version = versioning.name
+// version = versioning.name
+version = "1.0.0"
 
 ext {
     // Library Settings
@@ -17,19 +22,20 @@ ext {
     libraryDescription = "DataBinding extension for FlexibleAdapter project"
     libraryLabels = ['android', 'flexibleadapter', 'adapter', 'databinding', 'binding']
 
-    publishedGroupId = "eu.davidea"
+    publishedGroupId = "com.github.AcHsu104"
     bintrayName = "flexible-adapter-databinding"
     artifact = bintrayName
 }
 
 android {
     compileSdkVersion targetSdk
+    namespace 'eu.davidea'
 
     defaultConfig {
         minSdkVersion minSdk
         targetSdkVersion targetSdk
-        versionCode versioning.code
-        versionName versioning.name
+        versionCode 1
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -52,4 +58,28 @@ dependencies {
 
 if (project.hasProperty('all') || project.hasProperty('databinding')) {
     apply from: '../maven-install.gradle'
+}
+
+// 发布配置
+afterEvaluate {
+    publishing {
+        publications {
+            // 创建名为 "release" 的 Maven 发布
+            mavenAar(MavenPublication) {
+                from components.findByName('release')
+                groupId = 'com.github.jitpack'
+                artifactId = 'com.github.AcHsu104'
+                version = '1.0.0'
+                // artifact sourcesJar
+                // artifact javadocJar
+                // from components.release
+            }
+        }
+    }
+}
+
+task comps {
+    afterEvaluate {
+        println("Components: " + components*.name)
+    }
 }
