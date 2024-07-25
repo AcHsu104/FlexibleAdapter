@@ -3,6 +3,7 @@
 plugins {
     id 'com.android.library'
     id 'de.mannodermaus.android-junit5'
+    id 'maven-publish'
 }
 
 // apply plugin: 'eu.davidea.grabver'

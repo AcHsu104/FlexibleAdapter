@@ -1,6 +1,7 @@
 // apply plugin: 'com.android.library'
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
 
 // apply plugin: 'eu.davidea.grabver'
