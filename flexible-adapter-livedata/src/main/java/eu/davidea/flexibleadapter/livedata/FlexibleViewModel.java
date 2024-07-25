@@ -15,14 +15,14 @@
  */
 package eu.davidea.flexibleadapter.livedata;
 
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.arch.core.util.Function;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
-import androidx.annotation.MainThread;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.List;
 
@@ -48,10 +48,10 @@ public abstract class FlexibleViewModel<Source, AdapterItem, Identifier> extends
 
     public FlexibleViewModel() {
         identifier = new MutableLiveData<>();
-        liveItems = Transformations.switchMap(identifier, new Function<Identifier, LiveData<List<AdapterItem>>>() {
+        liveItems = (LiveData<List<AdapterItem>>) Transformations.switchMap(identifier, new Function<Identifier, LiveData<List<AdapterItem>>>() {
             @Override
             public LiveData<List<AdapterItem>> apply(Identifier input) {
-                return Transformations.map(getSource(input), new Function<Source, List<AdapterItem>>() {
+                return (LiveData<List<AdapterItem>>) Transformations.map(getSource(input), new Function<Source, List<AdapterItem>>() {
                     @Override
                     public List<AdapterItem> apply(Source source) {
                         if (isSourceValid(source)) {

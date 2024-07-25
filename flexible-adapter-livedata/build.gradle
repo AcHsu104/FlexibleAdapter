@@ -66,6 +66,9 @@ android {
 dependencies {
     // Lifecycle
     implementation androidx.lifecycleExtensions
+    implementation 'androidx.core:core:1.13.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-core:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1' // 確保使用最新版本
 
     // Test libraries
     androidTestImplementation androidx.annotation
