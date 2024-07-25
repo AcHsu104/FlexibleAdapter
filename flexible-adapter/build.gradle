@@ -29,7 +29,7 @@ ext {
 
 android {
     compileSdkVersion targetSdk
-    namespace 'eu.davidea'
+    namespace 'eu.davidea.flexibleadapter'
 
     defaultConfig {
         minSdkVersion minSdk

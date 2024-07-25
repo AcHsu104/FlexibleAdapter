@@ -30,7 +30,7 @@ ext {
 
 android {
     compileSdkVersion targetSdk
-    namespace 'eu.davidea'
+    namespace 'eu.davidea.flexibleadapter.livedata'
     
     defaultConfig {
         minSdkVersion minSdk
