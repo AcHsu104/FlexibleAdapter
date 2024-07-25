@@ -20,24 +20,24 @@
 		android:layout_margin="@dimen/margin_small"
 		android:orientation="horizontal">
 
-		<eu.davidea.flipview.FlipView
-			android:id="@+id/instagram_image_like"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginEnd="@dimen/margin_small"
-			android:layout_marginRight="@dimen/margin_small"
-			android:clickable="true"
-			android:inAnimation="@anim/scale_up"
-			android:outAnimation="@anim/scale_down"
-			app:animationDuration="300"
-			app:checked="false"
-			app:enableInitialAnimation="true"
-			app:frontBackgroundColor="@android:color/transparent"
-			app:frontImage="@drawable/ic_favorite_border_grey_600_24dp"
-			app:rearBackgroundColor="@android:color/transparent"
-			app:rearImage="@drawable/ic_favorite_red700_24dp"
-			app:rearImageAnimationDelay="100"
-			app:rearImageAnimationDuration="200"/>
+<!--		<eu.davidea.flipview.FlipView-->
+<!--			android:id="@+id/instagram_image_like"-->
+<!--			android:layout_width="wrap_content"-->
+<!--			android:layout_height="wrap_content"-->
+<!--			android:layout_marginEnd="@dimen/margin_small"-->
+<!--			android:layout_marginRight="@dimen/margin_small"-->
+<!--			android:clickable="true"-->
+<!--			android:inAnimation="@anim/scale_up"-->
+<!--			android:outAnimation="@anim/scale_down"-->
+<!--			app:animationDuration="300"-->
+<!--			app:checked="false"-->
+<!--			app:enableInitialAnimation="true"-->
+<!--			app:frontBackgroundColor="@android:color/transparent"-->
+<!--			app:frontImage="@drawable/ic_favorite_border_grey_600_24dp"-->
+<!--			app:rearBackgroundColor="@android:color/transparent"-->
+<!--			app:rearImage="@drawable/ic_favorite_red700_24dp"-->
+<!--			app:rearImageAnimationDelay="100"-->
+<!--			app:rearImageAnimationDuration="200"/>-->
 
 		<ImageView
 			android:id="@+id/instagram_image_comment"

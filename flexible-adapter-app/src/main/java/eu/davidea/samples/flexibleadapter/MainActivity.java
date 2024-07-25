@@ -1,5 +1,6 @@
 package eu.davidea.samples.flexibleadapter;
 
+import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -42,6 +43,7 @@ import java.util.Collections;
 import java.util.List;
 
 import eu.davidea.fastscroller.FastScroller;
+import eu.davidea.flexibleadapter.BuildConfig;
 import eu.davidea.flexibleadapter.FlexibleAdapter;
 import eu.davidea.flexibleadapter.Payload;
 import eu.davidea.flexibleadapter.SelectableAdapter.Mode;
@@ -878,6 +880,7 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onActionConfirmed(@UndoHelper.Action int action, int event) {
         if (action == UndoHelper.Action.UPDATE) {

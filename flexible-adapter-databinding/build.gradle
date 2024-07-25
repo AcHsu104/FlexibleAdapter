@@ -29,12 +29,12 @@ ext {
 }
 
 android {
-    compileSdkVersion targetSdk
+//    compileSdkVersion 33
     namespace 'eu.davidea.flexibleadapter.databinding'
 
     defaultConfig {
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk
+        minSdkVersion 14
+        compileSdk 33
         versionCode 1
         versionName "1.0.0"
     }
@@ -46,6 +46,11 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
     }
 }
 

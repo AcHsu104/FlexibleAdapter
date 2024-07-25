@@ -28,12 +28,12 @@ ext {
 }
 
 android {
-    compileSdkVersion targetSdk
+//    compileSdkVersion 33
     namespace 'eu.davidea.flexibleadapter'
 
     defaultConfig {
-        minSdkVersion minSdk
-        targetSdkVersion targetSdk
+        minSdkVersion 14
+        compileSdk 33
         versionCode 1
         versionName "5.1.0"
     }
@@ -45,6 +45,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
     }
 }
 
