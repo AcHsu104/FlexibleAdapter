@@ -89,7 +89,7 @@ afterEvaluate {
             mavenAar(MavenPublication) {
                 from components.findByName('release')
                 groupId = 'com.github.jitpack'
-                artifactId = 'com.github.AcHsu104'
+                artifactId = 'com.github.AcHsu104.flexibleadapter.livedata'
                 version = '1.0.0'
                 // artifact sourcesJar
                 // artifact javadocJar
