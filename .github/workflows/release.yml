@@ -1,0 +1,15 @@
+name: publish release
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: ncipollo/release-action@v1
+        with:
+          generateRelesaeNotes: true

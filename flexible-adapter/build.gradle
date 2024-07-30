@@ -15,8 +15,9 @@ plugins {
 // }
 // For maven repository
 // version = versioning.name
-version = "5.1.0"
-group = 'com.github.jitpack'
+
+group = 'eu.davidea'
+version = '5.1.0'
 
 ext {
     // Library Settings
@@ -51,6 +52,10 @@ android {
         viewBinding true
         buildConfig true
     }
+
+    publishing {
+        singleVariant("release")
+    }
 }
 
 dependencies {
@@ -62,26 +67,31 @@ if (project.hasProperty('all') || project.hasProperty('adapter')) {
     apply from: '../maven-publish.gradle'
 }
 
-// 发布配置
+tasks.register('generateSourcesJar', Jar) {
+    from(sourceSets.main.get().allSource)
+    archiveClassifier.set('sources')
+}
+
 afterEvaluate {
+    // 发布配置
     publishing {
         publications {
-            // 创建名为 "release" 的 Maven 发布
-            mavenAar(MavenPublication) {
+            release(MavenPublication) {
                 from components.findByName('release')
-                groupId = 'com.github.jitpack'
-                artifactId = 'com.github.AcHsu104.flexibleadapter'
+                groupId = 'eu.davidea'
+                artifactId = 'flexible-adapter'
                 version = '5.1.0'
-                // artifact sourcesJar
-                // artifact javadocJar
-                // from components.release
             }
+        }
+
+        repositories {
+            maven { url "https://jitpack.io" }
         }
     }
 }
 
-task comps {
-    afterEvaluate {
-        println("Components: " + components*.name)
+project.afterEvaluate {
+    tasks.register('comps') {
+        println("Components: " + project(':flexible-adapter').components*.name)
     }
 }

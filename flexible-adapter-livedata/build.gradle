@@ -61,6 +61,10 @@ android {
         viewBinding true
         buildConfig true
     }
+
+    publishing {
+        singleVariant("release")
+    }
 }
 
 dependencies {
@@ -93,22 +97,27 @@ if (project.hasProperty('all') || project.hasProperty('livedata')) {
 afterEvaluate {
     publishing {
         publications {
-            // 创建名为 "release" 的 Maven 发布
-            mavenAar(MavenPublication) {
+            release(MavenPublication) {
                 from components.findByName('release')
-                groupId = 'com.github.jitpack'
-                artifactId = 'com.github.AcHsu104.flexibleadapter.livedata'
+                groupId = 'eu.davidea'
+                artifactId = 'flexible-adapter-livedata'
                 version = '1.0.0'
-                // artifact sourcesJar
-                // artifact javadocJar
-                // from components.release
             }
+        }
+
+        repositories {
+            maven { url "https://jitpack.io" }
         }
     }
 }
 
-task comps {
-    afterEvaluate {
-        println("Components: " + components*.name)
+tasks.register('generateSourcesJar', Jar) {
+    from(sourceSets.main.get().allSource)
+    archiveClassifier.set('sources')
+}
+
+project.afterEvaluate {
+    tasks.register('comps') {
+            println("Components: " + components*.name)
     }
 }
