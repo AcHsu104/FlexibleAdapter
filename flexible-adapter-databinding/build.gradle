@@ -17,6 +17,11 @@ plugins {
 // version = versioning.name
 version = "1.0.0"
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+def packageCloudReadToken = properties.getProperty('packageCloudReadToken')
+def mavenPassword = properties.getProperty('mavenPassword')
+
 ext {
     // Library Settings
     libraryName = "FlexibleAdapter DataBinding extension"
@@ -83,7 +88,16 @@ afterEvaluate {
         }
 
         repositories {
-            maven { url "https://jitpack.io" }
+            // 要上傳到package cloud 打開此設定
+            maven {
+                url "https://packagecloud.io/priv/${packageCloudReadToken}/104corp/android/maven2"
+                credentials {
+                    username = mavenPassword
+                    password = ""
+                }
+            }
+            // 要上傳到 jitpack 打開此設定, 需public repo
+//            maven { url "https://jitpack.io" }
         }
     }
 }
